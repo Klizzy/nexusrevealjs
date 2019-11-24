@@ -20,4 +20,4 @@ jobs:
                 shell: bash
                 run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
                 id: extract_branch
-            -   run: surge ./ --domain https://nxs-${{ steps.extract_branch.outputs.branch }} --token ${{ secrets.SURGE_TOKEN }}
+            -   run: surge --project ./ --domain https://nxs-${{ steps.extract_branch.outputs.branch }} --token ${{ secrets.SURGE_TOKEN }}
