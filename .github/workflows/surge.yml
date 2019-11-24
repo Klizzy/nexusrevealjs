@@ -12,5 +12,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 9
-      - run: npm install -g surge
-      - run: surge ./ nxs-${GITHUB_REF:11} --token ${{ secrets.SURGE_TOKEN }}
+      - run: npm install -g surge && npm install
+        name: Extract branch name
+        shell: bash
+      - run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - run: surge ./ nxs-${{ steps.extract_branch.outputs.branch }} --token ${{ secrets.SURGE_TOKEN }}
