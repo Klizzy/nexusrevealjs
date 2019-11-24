@@ -13,7 +13,7 @@ jobs:
                 with:
                     node-version: 9
             -   name: Install surge
-                run: npm install -g
+                run: npm install -g surge
             -   name: Install revealjs
                 run: npm install
             -   name: Extract branch name
