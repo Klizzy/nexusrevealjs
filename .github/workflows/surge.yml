@@ -13,4 +13,4 @@ jobs:
         with:
           node-version: 8
       - run: npm install -g surge
-      - run: surge ./ nxs-${GITHUB_REF##*/} --token ${{ secrets.SURGE_TOKEN }}
+      - run: surge ./ nxs-${GITHUB_REF:11} --token ${{ secrets.SURGE_TOKEN }}
