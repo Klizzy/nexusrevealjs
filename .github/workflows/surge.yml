@@ -9,7 +9,7 @@ jobs:
         steps:
             -   uses: actions/checkout@v1
             -   name: Setup node
-            -   uses: actions/setup-node@v1
+                uses: actions/setup-node@v1
                 with:
                     node-version: 9
             -   name: Install surge
@@ -18,6 +18,6 @@ jobs:
                 run: npm install
             -   name: Extract branch name
                 shell: bash
-            -   run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+                run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
                 id: extract_branch
             -   run: surge --domain https://nxs-${{ steps.extract_branch.outputs.branch }} --token ${{ secrets.SURGE_TOKEN }}
